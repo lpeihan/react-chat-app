@@ -1,0 +1,44 @@
+@import "../../styles/variables"
+@import "../../styles/mixins"
+
+.field
+
+  .input-wrapper
+    position: relative
+    display: flex
+    height: 50px
+    align-items: center
+
+    &::after
+      content: ''
+      absolute: bottom 0 left 0 right 0
+      border-bottom: 1px solid $color-border
+      transform: scaleY(0.5)
+
+    &:focus-within::after
+      border-bottom: 1px solid $color-theme
+
+    .left-icon
+      width: 40px
+      .icon
+        color: $color-text-ll
+        font-size: 20px
+    .delete-icon
+      width: 50px
+      text-align: center
+      .icon
+        color: $color-text-ll
+        font-size: 18px
+
+    .input
+      flex: 1
+      height: 36px
+
+      &::placeholder
+        color: $color-border
+      
+  .error-text
+    height: 24px
+    font-size: $font-size-medium - 1
+    padding-top: 8px
+    color: $color-sub-theme

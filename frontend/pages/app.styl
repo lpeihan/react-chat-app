@@ -1,0 +1,52 @@
+@import "../styles/variables"
+@import "../styles/mixins"
+
+.app
+  fixed: top 0 left 0 right 0 bottom 0
+  background: rgb(235, 235, 235)
+
+  .header
+    display: flex
+    height: 50px
+    color: $white
+    align-items: center
+    background: linear-gradient(to right, rgb(69, 155, 254), rgb(43, 193, 253))
+
+    .user, .back
+      width: 50px
+      text-align: center
+
+    .user
+      .icon
+        font-size: 20px
+
+    .text
+      flex: 1
+      text-align: center
+
+  .messages-wrapper
+    height: calc(100% - 100px)
+    overflow: auto
+
+  .bottom
+    absolute: bottom 0 left 0 right 0
+
+    .chat-input
+      display: flex
+      align-items: center
+      height: 50px
+      padding: 0 10px
+      background: $white
+
+      .icon
+        color: $color-text-l
+
+      .input
+        border: none
+        flex: 1
+        font-size: $font-size-large
+        height: 50px
+        padding: 0 10px
+      
+      .am-button-small
+        padding: 0 10px

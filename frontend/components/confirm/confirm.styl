@@ -1,0 +1,55 @@
+@import "../../styles/variables"
+@import "../../styles/mixins"
+
+.confirm
+  fixed: top 0 left 0 right 0 bottom 0
+  background: $color-overlay
+
+  &.popup
+    &-enter
+      opacity: 0
+      .confirm-content
+        transform: translate3d(-50%, -50%, 0) scale(.8)
+    &-enter-active
+      opacity: 1
+      transition: all .3s
+      .confirm-content
+        transition: all .3s
+        transform: translate3d(-50%, -50%, 0) scale(1)
+    &-leave
+      opacity: 1
+      .confirm-content
+        transform: translate3d(-50%, -50%, 0) scale(1)
+    &-leave-active
+      opacity: 0
+      transition: all .3s
+      .confirm-content
+        transform: translate3d(-50%, -50%, 0) scale(.8)
+        transition: all .3s
+
+  
+  &-content
+    absolute: left 50%  top 50%
+    width: 80%
+    text-align: center
+    background: $white
+    transform: translate3d(-50%, -50%, 0) scale(1)
+    border-radius: 5px
+
+    .main
+      padding: 30px
+      line-height: 24px
+    
+    .footer
+      height: h = 44px
+      display: flex
+      color: $color-theme
+      .cancel-btn
+        flex: 1
+        line-height: h
+      .confirm-btn
+        flex: 1
+        line-height: h
+    
+
+    

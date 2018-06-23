@@ -1,0 +1,50 @@
+@import "../../styles/variables"
+@import "../../styles/mixins"
+
+.messages
+  padding: 20px 0
+  .message-item
+    position: relative
+    margin-bottom: 20px
+    display: flex
+    &:last-child
+      margin-bottom: 0
+    
+    .self
+      flex-direction: row-reverse
+
+    .avatar
+      size: 40px
+      background: url('../../assets/images/avatar.png') no-repeat
+      background-size: 100% 100%
+      border-radius: 50%
+      margin: 0 10px
+
+    .text-wrap
+      position: relative
+      max-width: calc(100% - 150px)
+      .arrow
+        absolute: top 20px left -13px
+        size: 0
+        border: 8px solid transparent
+        border-right: 8px solid rgb(162, 212, 242)
+      .nickname
+        color: $color-text-l
+        font-size: $font-size-small
+        margin-bottom: 5px
+      .text
+        display: inline-flex
+        flex-wrap: wrap
+        align-items: center
+        padding: 6px 12px
+        line-height: 24px
+        background: rgb(162, 212, 242)
+        border-radius: 5px
+
+    .msg-emoji
+      size: 30px
+      background: url('../../assets/images/emojis.png') no-repeat
+      background-size: 30px auto
+      margin-right: 6px
+      &:last-child
+        margin-right: 0

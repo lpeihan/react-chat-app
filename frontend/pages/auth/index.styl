@@ -1,0 +1,38 @@
+@import "../../styles/variables"
+@import "../../styles/mixins"
+
+.login
+.signup
+  fixed: top 0 left 0 right 0 bottom 0
+  background: $white
+
+  .form
+    padding: 30px 20px
+
+    .link
+      color: $color-text-ll
+      font-size: $font-size-medium
+      relative: top -10px
+      overflow: hidden
+      span
+        display: flex
+        align-items: center
+        float: right
+
+      .icon
+        font-size: 20px
+        relative: right top 1px
+
+    .btn
+      margin-top: 25px
+      width: 100%
+      padding: 12px 0
+      font-size: $font-size-large
+      color: $white
+      border-radius: 5px
+      border: none
+      background-color: $color-sub-theme
+      &:active
+        opacity: .8
+      &[disabled]
+        opacity: .4

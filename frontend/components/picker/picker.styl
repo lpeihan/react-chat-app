@@ -1,0 +1,83 @@
+@import "../../styles/variables"
+@import "../../styles/mixins"
+
+$height = 42px
+
+.picker
+  fixed: top 0 left 0 right 0 bottom 0
+  background: $color-overlay
+
+  &.popup
+    &-enter
+      opacity: 0
+      .content
+        transform: translateY(100%)
+
+    &-enter-active
+      opacity: 1
+      transition: all .3s
+      .content
+        transition: all .3s
+        transform: translateY(0)
+
+    &-leave
+      opacity: 1
+      .content
+        transform: translateY(0)
+
+    &-leave-active
+      opacity: 0
+      transition: all .3s
+      .content
+        transition: all .3s
+        transform: translateY(100%)
+
+  .content
+    absolute: bottom 0 left 0 right 0
+    background: $white
+    text-align: center
+
+    .header
+      height: h = 44px
+      line-height: h
+      color: $color-theme
+      border-1px()
+      display: flex
+      .cancel
+      .sure
+        flex: 1
+      .cancel
+        color: $color-text-l
+
+    .main
+      height: 294px
+      overflow: hidden
+      position: relative
+      li
+        height: $height
+        line-height: $height
+        &.current
+          color: $color-theme
+        &.one
+          opacity: .5
+        &.two
+          opacity: .4
+        &.three
+          opacity: .3
+
+      .select
+        absolute: bottom 126px left 0 right 0
+        height: $height
+        background: #F7F9FB
+        &:after
+          content: ''
+          absolute: top 0 left 0 right 0
+          height: 1px
+          background: $color-border
+          transform: scaleY(0.5)
+        &:before
+          content: ''
+          absolute: bottom 0 left 0 right 0
+          height: 1px
+          background: $color-border
+          transform: scaleY(0.5)

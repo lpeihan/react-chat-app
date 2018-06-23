@@ -1,0 +1,53 @@
+@import "../../styles/variables"
+@import "../../styles/mixins"
+
+.upload-image
+  fixed: top 0 left 0 right 0 bottom 0
+  background: $color-overlay
+
+  &.popup
+    &-enter
+      opacity: 0
+      .content
+        transform: translateY(100%)
+
+    &-enter-active
+      opacity: 1
+      transition: all .3s
+      .content
+        transition: all .3s
+        transform: translateY(0)
+
+    &-leave
+      opacity: 1
+      .content
+        transform: translateY(0)
+
+    &-leave-active
+      opacity: 0
+      transition: all .3s
+      .content
+        transition: all .3s
+        transform: translateY(100%)
+
+  .content
+    absolute: bottom 0 left 0 right 0
+    background: $white
+
+    .camera
+    .photos
+    .cancel
+      position: relative
+      height: h = 60px
+      text-align: center
+      line-height: h
+      border-1px()
+    .cancel
+      color: $color-theme
+    
+    input[type="file"]
+      absolute: top 0 left 0 right 0 bottom 0
+      opacity: 0
+
+
+
