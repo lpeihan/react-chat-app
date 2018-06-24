@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Toast } from 'antd-mobile';
 
 import { login } from '../../store/actions/auth';
 
@@ -39,6 +40,8 @@ class Login extends React.Component {
         username: this.username.value,
         password: this.password.value
       });
+
+      Toast.success('登陆成功', 2);
 
       this.props.history.push('/');
     } catch (err) {

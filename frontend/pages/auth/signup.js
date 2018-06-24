@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Toast } from 'antd-mobile';
 
 import Field from '../../components/field/field';
 import Navbar from '../../components/navbar/navbar';
@@ -41,6 +42,8 @@ class Signup extends React.Component {
         password: this.password.value,
         passwordConfirmation: this.passwordConfirmation.value
       });
+
+      Toast.success('注册成功', 2);
 
       this.props.history.push('/');
     } catch (err) {

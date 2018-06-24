@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout, modifyMyInfo } from '../../store/actions/auth';
+import { Toast } from 'antd-mobile';
 
 import Navbar from '../../components/navbar/navbar';
 import MyField from './my-field';
@@ -22,8 +23,9 @@ class My extends React.Component {
     this.refs.uploadImage.open();
   }
 
-  uploadCompleted = (avatar) => {
-    this.props.modifyMyInfo({ avatar });
+  uploadCompleted = async (avatar) => {
+    await this.props.modifyMyInfo({ avatar });
+    Toast.success('头像修改成功', 2);
   }
 
   openConfirm = () => {
@@ -38,8 +40,9 @@ class My extends React.Component {
     this.props.logout();
   }
 
-  confirmPicker = (value) => {
-    this.props.modifyMyInfo({ sex: value === '男' ? 0 : 1 });
+  confirmPicker = async (value) => {
+    await this.props.modifyMyInfo({ sex: value === '男' ? 0 : 1 });
+    Toast.success('信息修改成功', 2);
   }
 
   render() {
@@ -54,7 +57,9 @@ class My extends React.Component {
 
         <div className="logout" onClick={ this.openConfirm }>退出登录</div>
         <Confirm ref="confirm" onConfrim={ this.confirmLogout } />
-        <Picker ref="picker" options={ ['男', '女'] } onConfirm={ this.confirmPicker } />
+        <Picker ref="picker" options={ ['男', '女'] }
+          onConfirm={ this.confirmPicker } index={ this.props.user.sex }
+        />
       </div>
     );
   }

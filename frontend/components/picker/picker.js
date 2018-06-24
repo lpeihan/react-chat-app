@@ -23,11 +23,17 @@ class Picker extends React.Component {
 
   static propTypes = {
     options: PropTypes.array,
-    onConfirm: PropTypes.func
+    onConfirm: PropTypes.func,
+    index: PropTypes.number
   }
 
   static defaultProps = {
-    options: [0, 1, 2, 3, 4, 5, 6]
+    options: [0, 1, 2, 3, 4, 5, 6],
+    index: 0
+  }
+
+  componentDidMount() {
+    this.initOption();
   }
 
   open = () => {
@@ -36,6 +42,12 @@ class Picker extends React.Component {
 
   close = () => {
     this.setState({ show: false });
+  }
+
+  initOption() {
+    this.setState({ translateY: -this.height * this.props.index });
+
+    this.currentIndex = this.props.index;
   }
 
   setOption = () => {
