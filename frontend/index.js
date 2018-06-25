@@ -16,8 +16,10 @@ import cache from './utils/cache';
 import './utils/axios';
 
 import './styles/index.styl';
+import { receiveMessage } from './store/actions/message';
 
 if (cache.getItem(jsonWebToken)) {
+  store.dispatch(receiveMessage());
   store.dispatch(setCurrentUser(jwtDecode(cache.getItem(jsonWebToken))));
 }
 

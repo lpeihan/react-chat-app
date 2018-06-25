@@ -7,7 +7,7 @@ import BScroll from 'better-scroll';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getMessageList, sendMessage, receiveMessage } from '../store/actions/message';
+import { getMessageList, sendMessage } from '../store/actions/message';
 
 import './app.styl';
 
@@ -26,13 +26,11 @@ class App extends React.Component {
     user: PropTypes.object,
     getMessageList: PropTypes.func,
     messages: PropTypes.array,
-    sendMessage: PropTypes.func,
-    receiveMessage: PropTypes.func
+    sendMessage: PropTypes.func
   }
 
   async componentDidMount() {
     await this.props.getMessageList();
-    this.props.receiveMessage();
 
     this.scroll = new BScroll(this.refs.messagesWrapper, {
       click: true
@@ -141,6 +139,5 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
   getMessageList,
-  sendMessage,
-  receiveMessage
+  sendMessage
 })(App);
