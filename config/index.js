@@ -4,7 +4,7 @@ const app = require('../package.json');
 
 module.exports = {
   host: 'localhost',
-  port: 3000,
+  port: 2004,
   cookie: {
     keys: [
       'APdtVf2BKugFEPO0gWQgaT0GmbWge10ZvUnRAMgBLU',
