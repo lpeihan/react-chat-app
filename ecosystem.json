@@ -1,0 +1,28 @@
+{
+  "apps": [
+    {
+      "name": "react-chat-app",
+      "script": "server.js",
+      "env": {
+        "COMMON_VARIAVLE": "true"
+      },
+      "env_production": {
+        "NODE_ENV": "production"
+      }
+    }
+  ],
+  "deploy": {
+    "production": {
+      "user": "lpeihan",
+      "host": ["47.98.144.117"],
+      "port": "8301",
+      "ref": "origin/master",
+      "repo": "git@github.com:lpeihan/react-chat-app.git",
+      "path": "/www/react-chat-app/production",
+      "ssh_options": "StrictHostKeyChecking=no",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}
