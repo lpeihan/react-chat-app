@@ -24,5 +24,6 @@ router
   .use('/api/messages', message.routes(), message.allowedMethods())
 
   .all('/', html);
+  .all('/*', html);
 
 module.exports = router;
