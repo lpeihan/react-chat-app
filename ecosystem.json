@@ -16,7 +16,7 @@
       "user": "lpeihan",
       "host": ["47.98.144.117"],
       "port": "8301",
-      "ref": "origin/master",
+      "ref": "origin/gh-pages",
       "repo": "git@github.com:lpeihan/react-chat-app.git",
       "path": "/www/react-chat-app/production",
       "ssh_options": "StrictHostKeyChecking=no",
