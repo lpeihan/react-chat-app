@@ -18,8 +18,9 @@ import './utils/axios';
 import './styles/index.styl';
 import { receiveMessage } from './store/actions/message';
 
+store.dispatch(receiveMessage());
+
 if (cache.getItem(jsonWebToken)) {
-  store.dispatch(receiveMessage());
   store.dispatch(setCurrentUser(jwtDecode(cache.getItem(jsonWebToken))));
 }
 
