@@ -35,14 +35,7 @@ module.exports = (config) => {
 
   app.promise = new Promise((resolve, reject) => {
     const server = require('http').Server(app.callback());
-    const io = require('socket.io')(server);
-
-    io.on('connection', function(socket) {
-      socket.emit('news', { hello: 'world' });
-      socket.on('my other event', function (data) {
-        console.log(data);
-      });
-    });
+    require('../services/socket')(require('socket.io')(server));
 
     server.listen(config.port, (err) => {
       if (err) {

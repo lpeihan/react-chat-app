@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import './messages.styl';
 import names from '../emojis/emoji-names';
@@ -7,7 +8,8 @@ import names from '../emojis/emoji-names';
 class Messages extends React.Component {
   static propTypes = {
     messages: PropTypes.array.isRequired,
-    messagesRef: PropTypes.func
+    messagesRef: PropTypes.func,
+    user: PropTypes.object
   }
 
   renderContent(text) {
@@ -28,14 +30,15 @@ class Messages extends React.Component {
       <div className="messages" ref={ this.props.messagesRef }>
         { this.props.messages.map((message, index) => {
           return (
-            <div key={ index } className="message-item">
-              <div className="avatar" />
+            <div key={ index }
+              className={ classnames('message-item', { 'self': message.user === this.props.user.id }) }>
+              <div className="avatar" style={ { backgroundImage: `url(${message.user_avatar})` }} />
               <div className="text-wrap">
                 <div className="arrow" />
                 <p className="nickname">
-                  我是梁梅红宝宝呀🍒🍒🍒
+                  { message.username }
                 </p>
-                <div className="text" dangerouslySetInnerHTML={{ __html: this.renderContent(message) }} />
+                <div className="text" dangerouslySetInnerHTML={{ __html: this.renderContent(message.content) }} />
               </div>
             </div>
           );

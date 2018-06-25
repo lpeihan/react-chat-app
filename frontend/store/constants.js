@@ -1,1 +1,5 @@
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+
+export const SET_MESSAGE_LIST = 'SET_MESSAGE_LIST';
+
+export const ADD_MESSAGE = 'ADD_MESSAGE';

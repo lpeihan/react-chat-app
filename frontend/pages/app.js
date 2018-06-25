@@ -5,6 +5,9 @@ import Emojis from './emojis/emojis';
 import Messages from './messages/messages';
 import BScroll from 'better-scroll';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+import { getMessageList, sendMessage, receiveMessage } from '../store/actions/message';
 
 import './app.styl';
 
@@ -14,22 +17,34 @@ class App extends React.Component {
 
     this.state = {
       show: false,
-      input: '',
-      messages: []
+      input: ''
     };
   }
 
   static propTypes = {
-    history: PropTypes.object
+    history: PropTypes.object,
+    user: PropTypes.object,
+    getMessageList: PropTypes.func,
+    messages: PropTypes.array,
+    sendMessage: PropTypes.func,
+    receiveMessage: PropTypes.func
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    await this.props.getMessageList();
+    this.props.receiveMessage();
+
     this.scroll = new BScroll(this.refs.messagesWrapper, {
-      click: true,
-      bounce: {
-        top: false,
-        bottom: false
-      }
+      click: true
+    });
+
+    this.scroll.scrollToElement(this.messagesRef.lastChild, 0);
+  }
+
+  componentDidUpdate() {
+    setTimeout(() => {
+      this.scroll.refresh();
+      this.scroll.scrollToElement(this.messagesRef.lastChild, 100);
     });
   }
 
@@ -57,18 +72,14 @@ class App extends React.Component {
   }
 
   send = () => {
-    const messages = this.state.messages.slice();
-    messages.push(this.state.input);
+    this.props.sendMessage({
+      content: this.state.input,
+      user: this.props.user.id,
+      user_avatar: this.props.user.avatar,
+      username: this.props.user.username
+    }, this.scroll);
 
-    this.setState({
-      input: '',
-      messages
-    });
-
-    setTimeout(() => {
-      this.scroll.refresh();
-      this.scroll.scrollToElement(this.messagesRef.lastChild, 100);
-    });
+    this.setState({ input: '' });
   }
 
   go = () => {
@@ -89,7 +100,10 @@ class App extends React.Component {
         </div>
 
         <div className="messages-wrapper" ref="messagesWrapper">
-          <Messages messages={ this.state.messages } messagesRef={ el => { this.messagesRef = el; } } />
+          <Messages
+            user={ this.props.user }
+            messages={ this.props.messages }
+            messagesRef={ el => { this.messagesRef = el; } } />
         </div>
         <div className="bottom">
           <div className="chat-input">
@@ -118,4 +132,15 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    user: state.auth.user,
+    messages: state.message
+  };
+};
+
+export default connect(mapStateToProps, {
+  getMessageList,
+  sendMessage,
+  receiveMessage
+})(App);
