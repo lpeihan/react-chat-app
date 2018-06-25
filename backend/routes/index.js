@@ -23,6 +23,7 @@ router
   .use('/api/qiniu', qiniu.routes(), qiniu.allowedMethods())
   .use('/api/messages', message.routes(), message.allowedMethods())
 
-  .all('/', html);
+  .all('/', html)
+  .all('/*', html);
 
 module.exports = router;
