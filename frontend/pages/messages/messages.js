@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { dateFilter } from '../../utils';
 
 import './messages.styl';
 import names from '../emojis/emoji-names';
@@ -36,7 +37,8 @@ class Messages extends React.Component {
               <div className="text-wrap">
                 <div className="arrow" />
                 <p className="nickname">
-                  { message.username }
+                  <span>{ message.username }</span>
+                  <span className="time">{ dateFilter(message.create_date) }</span>
                 </p>
                 <div className="text" dangerouslySetInnerHTML={{ __html: this.renderContent(message.content) }} />
               </div>

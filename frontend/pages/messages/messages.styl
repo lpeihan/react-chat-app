@@ -12,10 +12,18 @@
     
     &.self
       flex-direction: row-reverse
+      .text-wrap
+        text-align: right
+        .arrow
+          border: none
+        .nickname
+          display: flex
+          flex-direction: row-reverse
+          .time
+            margin-right: 8px
 
     .avatar
       size: 40px
-      // background: url('../../assets/images/avatar.png') no-repeat
       background-size: 100% 100%
       border-radius: 50%
       margin: 0 10px
@@ -29,9 +37,11 @@
         border: 8px solid transparent
         border-right: 8px solid rgb(162, 212, 242)
       .nickname
-        color: $color-text-l
         font-size: $font-size-small
         margin-bottom: 5px
+        .time
+          color: $color-text-ll
+          margin-left: 8px
       .text
         display: inline-flex
         flex-wrap: wrap

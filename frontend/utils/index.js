@@ -83,3 +83,16 @@ export function throttle(func, delay) {
 export function getRandom(min, max) {
   return Math.round(Math.random() * (max - min) + min);
 }
+
+/*
+ * dateFilter
+ */
+export function dateFilter(value) {
+  const fillZero = function (str) {
+    return leftpad(str, 2, '0');
+  };
+  const date = new Date(parseInt(value, 10));
+
+  return value ? `${fillZero(date.getMonth() + 1)}-${fillZero(date.getDate())} ${fillZero(date.getHours())}:\
+${fillZero(date.getMinutes())}` : '';
+}
