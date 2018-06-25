@@ -43,7 +43,7 @@ class Login extends React.Component {
 
       Toast.success('登陆成功', 2);
 
-      this.props.history.push('/');
+      this.props.history.replace('/');
     } catch (err) {
       this.setState({ errors: err });
     }

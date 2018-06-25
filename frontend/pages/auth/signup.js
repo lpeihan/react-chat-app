@@ -45,7 +45,7 @@ class Signup extends React.Component {
 
       Toast.success('注册成功', 2);
 
-      this.props.history.push('/');
+      this.props.history.replace('/');
     } catch (err) {
       this.setState({ errors: err });
     }
